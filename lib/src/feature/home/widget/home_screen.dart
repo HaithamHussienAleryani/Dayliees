@@ -29,7 +29,14 @@ class HomeScreen extends StatelessWidget {
     // );
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Home Screen')),
+      appBar: AppBar(
+          title: Text(
+        'Home Screen',
+        style: Theme.of(context)
+            .textTheme
+            .headlineSmall!
+            .copyWith(fontWeight: FontWeight.bold),
+      )),
       backgroundColor: Theme.of(context).colorScheme.surface,
       body: const Column(
         mainAxisAlignment: MainAxisAlignment.center,
