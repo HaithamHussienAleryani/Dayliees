@@ -1,5 +1,5 @@
-import 'package:sizzle_starter/src/feature/settings/data/app_settings_datasource.dart';
-import 'package:sizzle_starter/src/feature/settings/model/app_settings.dart';
+import 'package:dayliees/src/feature/settings/data/app_settings_datasource.dart';
+import 'package:dayliees/src/feature/settings/model/app_settings.dart';
 
 /// {@template app_settings_repository}
 /// [AppSettingsRepository] sets and gets app settings.
@@ -24,5 +24,6 @@ final class AppSettingsRepositoryImpl implements AppSettingsRepository {
   Future<AppSettings?> getAppSettings() => datasource.getAppSettings();
 
   @override
-  Future<void> setAppSettings(AppSettings appSettings) => datasource.setAppSettings(appSettings);
+  Future<void> setAppSettings(AppSettings appSettings) =>
+      datasource.setAppSettings(appSettings);
 }

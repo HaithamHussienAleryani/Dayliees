@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sizzle_starter/src/core/constant/localization/localization.dart';
-import 'package:sizzle_starter/src/feature/home/widget/home_screen.dart';
-import 'package:sizzle_starter/src/feature/initialization/model/app_theme.dart';
-import 'package:sizzle_starter/src/feature/settings/widget/settings_scope.dart';
+import 'package:dayliees/src/core/constant/localization/localization.dart';
+import 'package:dayliees/src/feature/home/widget/home_screen.dart';
+import 'package:dayliees/src/feature/initialization/model/app_theme.dart';
+import 'package:dayliees/src/feature/settings/widget/settings_scope.dart';
 
 /// {@template material_context}
 /// [MaterialContext] is an entry point to the material context.
@@ -24,7 +24,8 @@ class MaterialContext extends StatelessWidget {
 
     return MaterialApp(
       theme: settings.appTheme?.lightTheme ?? AppTheme.defaultTheme.lightTheme,
-      darkTheme: settings.appTheme?.darkTheme ?? AppTheme.defaultTheme.darkTheme,
+      darkTheme:
+          settings.appTheme?.darkTheme ?? AppTheme.defaultTheme.darkTheme,
       themeMode: settings.appTheme?.themeMode ?? ThemeMode.system,
       locale: settings.locale,
       localizationsDelegates: Localization.localizationDelegates,
@@ -34,7 +35,9 @@ class MaterialContext extends StatelessWidget {
         key: _globalKey,
         data: mediaQueryData.copyWith(
           textScaler: TextScaler.linear(
-            mediaQueryData.textScaler.scale(settings.textScale ?? 1).clamp(0.5, 2),
+            mediaQueryData.textScaler
+                .scale(settings.textScale ?? 1)
+                .clamp(0.5, 2),
           ),
         ),
         child: child!,

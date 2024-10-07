@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sizzle_starter/src/feature/initialization/widget/dependencies_scope.dart';
-import 'package:sizzle_starter/src/feature/settings/bloc/app_settings_bloc.dart';
-import 'package:sizzle_starter/src/feature/settings/model/app_settings.dart';
+import 'package:dayliees/src/feature/initialization/widget/dependencies_scope.dart';
+import 'package:dayliees/src/feature/settings/bloc/app_settings_bloc.dart';
+import 'package:dayliees/src/feature/settings/model/app_settings.dart';
 
 /// {@template settings_scope}
 /// SettingsScope widget.
@@ -45,7 +45,8 @@ class _SettingsScopeState extends State<SettingsScope> {
   }
 
   @override
-  Widget build(BuildContext context) => BlocBuilder<AppSettingsBloc, AppSettingsState>(
+  Widget build(BuildContext context) =>
+      BlocBuilder<AppSettingsBloc, AppSettingsState>(
         bloc: _appSettingsBloc,
         builder: (context, state) => _InheritedSettings(
           settings: state.appSettings,
@@ -72,5 +73,6 @@ class _InheritedSettings extends InheritedWidget {
   final AppSettings? settings;
 
   @override
-  bool updateShouldNotify(covariant _InheritedSettings oldWidget) => settings != oldWidget.settings;
+  bool updateShouldNotify(covariant _InheritedSettings oldWidget) =>
+      settings != oldWidget.settings;
 }

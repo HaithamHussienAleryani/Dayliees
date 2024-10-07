@@ -1,12 +1,12 @@
 import 'package:clock/clock.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sizzle_starter/src/core/constant/config.dart';
-import 'package:sizzle_starter/src/core/utils/error_tracking_manager.dart';
-import 'package:sizzle_starter/src/core/utils/refined_logger.dart';
-import 'package:sizzle_starter/src/feature/initialization/model/dependencies_container.dart';
-import 'package:sizzle_starter/src/feature/settings/bloc/app_settings_bloc.dart';
-import 'package:sizzle_starter/src/feature/settings/data/app_settings_datasource.dart';
-import 'package:sizzle_starter/src/feature/settings/data/app_settings_repository.dart';
+import 'package:dayliees/src/core/constant/config.dart';
+import 'package:dayliees/src/core/utils/error_tracking_manager.dart';
+import 'package:dayliees/src/core/utils/refined_logger.dart';
+import 'package:dayliees/src/feature/initialization/model/dependencies_container.dart';
+import 'package:dayliees/src/feature/settings/bloc/app_settings_bloc.dart';
+import 'package:dayliees/src/feature/settings/data/app_settings_datasource.dart';
+import 'package:dayliees/src/feature/settings/data/app_settings_repository.dart';
 
 /// {@template composition_root}
 /// A place where all dependencies are initialized.
@@ -81,7 +81,8 @@ class DependenciesFactory extends AsyncFactory<DependenciesContainer> {
   Future<DependenciesContainer> create() async {
     final sharedPreferences = SharedPreferencesAsync();
 
-    final errorTrackingManager = await ErrorTrackingManagerFactory(config, logger).create();
+    final errorTrackingManager =
+        await ErrorTrackingManagerFactory(config, logger).create();
     final settingsBloc = await SettingsBlocFactory(sharedPreferences).create();
 
     return DependenciesContainer(
@@ -133,7 +134,8 @@ class SettingsBlocFactory extends AsyncFactory<AppSettingsBloc> {
   @override
   Future<AppSettingsBloc> create() async {
     final appSettingsRepository = AppSettingsRepositoryImpl(
-      datasource: AppSettingsDatasourceImpl(sharedPreferences: sharedPreferences),
+      datasource:
+          AppSettingsDatasourceImpl(sharedPreferences: sharedPreferences),
     );
 
     final appSettings = await appSettingsRepository.getAppSettings();

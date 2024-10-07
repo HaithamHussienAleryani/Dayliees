@@ -40,10 +40,11 @@ final class Localization {
 
     if (_delegate.isSupported(locale)) return locale;
 
-    return const Locale('en');
+    return const Locale('es');
   }
 
   /// Obtain [AppLocalizations] instance from [BuildContext].
   static AppLocalizations of(BuildContext context) =>
-      AppLocalizations.of(context) ?? (throw FlutterError('No Localization found in context'));
+      AppLocalizations.of(context) ??
+      (throw FlutterError('No Localization found in context'));
 }

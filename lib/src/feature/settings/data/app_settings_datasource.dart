@@ -1,10 +1,10 @@
 import 'dart:ui';
 
+import 'package:dayliees/src/core/utils/persisted_entry.dart';
+import 'package:dayliees/src/feature/initialization/model/app_theme.dart';
+import 'package:dayliees/src/feature/settings/data/theme_mode_codec.dart';
+import 'package:dayliees/src/feature/settings/model/app_settings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sizzle_starter/src/core/utils/persisted_entry.dart';
-import 'package:sizzle_starter/src/feature/initialization/model/app_theme.dart';
-import 'package:sizzle_starter/src/feature/settings/data/theme_mode_codec.dart';
-import 'package:sizzle_starter/src/feature/settings/model/app_settings.dart';
 
 /// {@template app_settings_datasource}
 /// [AppSettingsDatasource] sets and gets app settings.
@@ -34,13 +34,15 @@ final class AppSettingsDatasourceImpl implements AppSettingsDatasource {
   Future<AppSettings?> getAppSettings() => _appSettings.read();
 
   @override
-  Future<void> setAppSettings(AppSettings appSettings) => _appSettings.set(appSettings);
+  Future<void> setAppSettings(AppSettings appSettings) =>
+      _appSettings.set(appSettings);
 }
 
 /// Persisted entry for [AppSettings]
 class AppSettingsPersistedEntry extends SharedPreferencesEntry<AppSettings> {
   /// Create [AppSettingsPersistedEntry]
-  AppSettingsPersistedEntry({required super.sharedPreferences, required super.key});
+  AppSettingsPersistedEntry(
+      {required super.sharedPreferences, required super.key});
 
   late final _themeMode = StringPreferencesEntry(
     sharedPreferences: sharedPreferences,
@@ -125,7 +127,8 @@ class AppSettingsPersistedEntry extends SharedPreferencesEntry<AppSettings> {
   Future<void> set(AppSettings value) async {
     if (value.appTheme != null) {
       await (
-        _themeMode.set(const ThemeModeCodec().encode(value.appTheme!.themeMode)),
+        _themeMode
+            .set(const ThemeModeCodec().encode(value.appTheme!.themeMode)),
         _themeSeedColor.set(value.appTheme!.seed.value),
       ).wait;
     }

@@ -1,20 +1,18 @@
+import 'package:dayliees/src/core/constant/localization/localization.dart';
+import 'package:dayliees/src/core/utils/layout/layout.dart';
+import 'package:dayliees/src/core/utils/refined_logger.dart';
+import 'package:dayliees/src/feature/initialization/model/app_theme.dart';
+import 'package:dayliees/src/feature/settings/bloc/app_settings_bloc.dart';
+import 'package:dayliees/src/feature/settings/widget/settings_scope.dart';
 import 'package:flutter/material.dart';
-import 'package:sizzle_starter/src/core/utils/layout/layout.dart';
-import 'package:sizzle_starter/src/feature/settings/bloc/app_settings_bloc.dart';
-import 'package:sizzle_starter/src/feature/settings/widget/settings_scope.dart';
 
 /// {@template home_screen}
 /// HomeScreen is a simple screen that displays a grid of items.
 /// {@endtemplate}
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   /// {@macro home_screen}
   const HomeScreen({super.key});
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final appSettings = SettingsScope.settingsOf(context);
@@ -28,7 +26,24 @@ class _HomeScreenState extends State<HomeScreen> {
           SliverToBoxAdapter(
             child: Column(
               children: [
-                const Text('Text scale'),
+                GestureDetector(
+                  onTap: () {
+                    SettingsScope.of(context).add(
+                      AppSettingsEvent.updateAppSettings(
+                        appSettings: appSettings.copyWith(
+                          appTheme: AppTheme(
+                            themeMode:
+                                Theme.of(context).brightness == Brightness.light
+                                    ? ThemeMode.dark
+                                    : ThemeMode.light,
+                            seed: AppTheme.defaultTheme.seed,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                  child: Text(Localization.of(context).custom_colors),
+                ),
                 Slider(
                   divisions: 8,
                   min: 0.5,

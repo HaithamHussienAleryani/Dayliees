@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:meta/meta.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:sizzle_starter/src/core/utils/refined_logger.dart';
+import 'package:dayliees/src/core/utils/refined_logger.dart';
 
 /// {@template error_tracking_manager}
 /// A class which is responsible for enabling error tracking.
@@ -38,7 +38,8 @@ abstract base class ErrorTrackingManagerBase implements ErrorTrackingManager {
   /// Catch only warnings and errors
   Stream<LogMessage> get _reportLogs => _logger.logs.where(_warnOrUp);
 
-  static bool _warnOrUp(LogMessage log) => log.level.severity >= LogLevel.warn.severity;
+  static bool _warnOrUp(LogMessage log) =>
+      log.level.severity >= LogLevel.warn.severity;
 
   @mustCallSuper
   @mustBeOverridden

@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:sizzle_starter/src/core/utils/extensions/context_extension.dart';
+import 'package:dayliees/src/core/utils/extensions/context_extension.dart';
 
 /// A breakpoint that is used to determine the layout of the application.
 ///
@@ -136,7 +136,8 @@ class WindowSizeScope extends StatefulWidget {
   State<WindowSizeScope> createState() => _WindowSizeScopeState();
 }
 
-class _WindowSizeScopeState extends State<WindowSizeScope> with WidgetsBindingObserver {
+class _WindowSizeScopeState extends State<WindowSizeScope>
+    with WidgetsBindingObserver {
   late WindowSize _windowSize;
 
   WindowSize _getWindowSize() {
@@ -185,5 +186,6 @@ class _InheritedWindowSize extends InheritedWidget {
   final WindowSize windowSize;
 
   @override
-  bool updateShouldNotify(_InheritedWindowSize oldWidget) => windowSize != oldWidget.windowSize;
+  bool updateShouldNotify(_InheritedWindowSize oldWidget) =>
+      windowSize != oldWidget.windowSize;
 }

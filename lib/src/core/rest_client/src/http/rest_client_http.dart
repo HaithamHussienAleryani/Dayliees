@@ -1,11 +1,12 @@
 import 'package:cronet_http/cronet_http.dart' show CronetClient;
 import 'package:cupertino_http/cupertino_http.dart' show CupertinoClient;
-import 'package:flutter/foundation.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/foundation.dart'
+    show TargetPlatform, defaultTargetPlatform;
 import 'package:http/http.dart' as http;
-import 'package:sizzle_starter/src/core/rest_client/rest_client.dart';
-import 'package:sizzle_starter/src/core/rest_client/src/http/check_exception_io.dart'
-    if (dart.library.js_interop) 'package:sizzle_starter/src/core/rest_client/src/http/check_exception_browser.dart';
-import 'package:sizzle_starter/src/core/utils/refined_logger.dart';
+import 'package:dayliees/src/core/rest_client/rest_client.dart';
+import 'package:dayliees/src/core/rest_client/src/http/check_exception_io.dart'
+    if (dart.library.js_interop) 'package:dayliees/src/core/rest_client/src/http/check_exception_browser.dart';
+import 'package:dayliees/src/core/utils/refined_logger.dart';
 
 // coverage:ignore-start
 /// Creates an [http.Client] based on the current platform.
@@ -20,7 +21,9 @@ http.Client createDefaultHttpClient() {
   try {
     client = switch (platform) {
       TargetPlatform.android => CronetClient.defaultCronetEngine(),
-      TargetPlatform.iOS || TargetPlatform.macOS => CupertinoClient.defaultSessionConfiguration(),
+      TargetPlatform.iOS ||
+      TargetPlatform.macOS =>
+        CupertinoClient.defaultSessionConfiguration(),
       _ => null,
     };
   } on Object catch (e, stackTrace) {
@@ -53,7 +56,8 @@ final class RestClientHttp extends RestClientBase {
   ///  client: client,
   /// );
   /// ```
-  RestClientHttp({required super.baseUrl, http.Client? client}) : _client = client ?? http.Client();
+  RestClientHttp({required super.baseUrl, http.Client? client})
+      : _client = client ?? http.Client();
 
   final http.Client _client;
 

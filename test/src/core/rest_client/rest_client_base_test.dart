@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sizzle_starter/src/core/rest_client/rest_client.dart';
+import 'package:dayliees/src/core/rest_client/rest_client.dart';
 
 final jsonUtf8 = const JsonCodec().fuse(utf8);
 
@@ -135,7 +135,8 @@ void main() {
       const path = '/path';
       final queryParams = {'key1': 'value1', 'key2': 'value2'};
       final uri = client.buildUri(path: path, queryParams: queryParams);
-      final expectedUri = Uri.parse('http://localhost:8080$path?key1=value1&key2=value2');
+      final expectedUri =
+          Uri.parse('http://localhost:8080$path?key1=value1&key2=value2');
       expect(uri, equals(expectedUri));
     });
 
