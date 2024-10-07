@@ -40,7 +40,7 @@ final class Localization {
 
     if (_delegate.isSupported(locale)) return locale;
 
-    return const Locale('es');
+    return const Locale('en');
   }
 
   /// Obtain [AppLocalizations] instance from [BuildContext].

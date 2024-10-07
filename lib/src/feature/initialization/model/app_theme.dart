@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 /// {@template app_theme}
 /// An immutable class that holds properties needed
@@ -10,13 +11,72 @@ final class AppTheme with Diagnosticable {
   /// {@macro app_theme}
   AppTheme({required this.themeMode, required this.seed})
       : darkTheme = ThemeData(
-          colorSchemeSeed: seed,
           brightness: Brightness.dark,
+          textTheme: GoogleFonts.nunitoTextTheme().copyWith(
+            displayLarge: const TextStyle(
+              fontSize: 48,
+            ),
+            displayMedium: const TextStyle(
+              fontSize: 40,
+            ),
+            displaySmall: const TextStyle(
+              fontSize: 32,
+            ),
+            headlineLarge: const TextStyle(
+              fontSize: 28,
+            ),
+            headlineMedium: const TextStyle(
+              fontSize: 24,
+            ),
+            titleLarge: const TextStyle(
+              fontSize: 20,
+            ),
+            titleMedium: const TextStyle(
+              fontSize: 16,
+            ),
+            bodyLarge: const TextStyle(
+              fontSize: 12,
+            ),
+          ),
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color(0xff1EBC83),
+            primary: const Color(0xff1EBC83),
+            brightness: Brightness.dark,
+          ),
           useMaterial3: true,
         ),
         lightTheme = ThemeData(
-          colorSchemeSeed: seed,
+          textTheme: GoogleFonts.nunitoTextTheme().copyWith(
+            displayLarge: const TextStyle(
+              fontSize: 48,
+            ),
+            displayMedium: const TextStyle(
+              fontSize: 40,
+            ),
+            displaySmall: const TextStyle(
+              fontSize: 32,
+            ),
+            headlineLarge: const TextStyle(
+              fontSize: 28,
+            ),
+            headlineMedium: const TextStyle(
+              fontSize: 24,
+            ),
+            titleLarge: const TextStyle(
+              fontSize: 20,
+            ),
+            titleMedium: const TextStyle(
+              fontSize: 16,
+            ),
+            bodyLarge: const TextStyle(
+              fontSize: 12,
+            ),
+          ),
           brightness: Brightness.light,
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color(0xff1EBC83),
+            primary: const Color(0xff1EBC83),
+          ),
           useMaterial3: true,
         );
 
